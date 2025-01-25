@@ -1,11 +1,6 @@
-
-
-
-
-
 import React from 'react';
 
-export default function Profile() {
+export default function Profile({handleEdit, data}) {
   return (
     <div className="p-8 max-w-4xl mx-auto">
       <div className="flex flex-col lg:flex-row lg:items-center lg:gap-8">
@@ -18,7 +13,7 @@ export default function Profile() {
 
         {/* Profile Information */}
         <div className="mt-6 lg:mt-0 lg:flex-1">
-          <h2 className="bg-gray-50 text-3xl font-medium text-neutral-800">Mohsin</h2>
+          <h2 className="bg-gray-50 text-3xl font-medium text-neutral-800">{data.name || 'Mohsin'}</h2>
           <hr className="bg-zinc-400 h-[1px] border-none mt-2" />
 
           {/* Contact Information */}
@@ -27,15 +22,15 @@ export default function Profile() {
             <tbody>
               <tr>
                 <th className="pr-4">Email Id:</th>
-                <td>xyz@gmail.com</td>
+                <td>{data.email || 'xyz@gmail.com'}</td>
               </tr>
               <tr>
                 <th className="pr-4">Phone:</th>
-                <td>+999999999</td>
+                <td>{data.phone || '786786786'}</td>
               </tr>
               <tr>
                 <th className="pr-4">Address:</th>
-                <td>###</td>
+                <td>{data.address || 'BTM 5th Stage'}</td>
               </tr>
             </tbody>
           </table>
@@ -46,18 +41,18 @@ export default function Profile() {
             <tbody>
               <tr>
                 <th className="pr-4">Gender:</th>
-                <td>Male</td>
+                <td>{data.gender || 'Male'}</td>
               </tr>
               <tr>
                 <th className="pr-4">DOB:</th>
-                <td>25 Dec 2001</td>
+                <td>{data.dob || '25-12-2001'}</td>
               </tr>
             </tbody>
           </table>
 
           {/* Action Buttons */}
           <div className="mt-6 flex gap-4">
-            <button className="border border-primary px-6 py-2 rounded-full hover:bg-primary hover:text-white">
+            <button onClick={handleEdit} className="border border-primary px-6 py-2 rounded-full hover:bg-primary hover:text-white">
               Edit
             </button>
             <button className="border border-primary px-6 py-2 rounded-full hover:bg-primary hover:text-white">
