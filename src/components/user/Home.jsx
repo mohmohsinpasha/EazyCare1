@@ -31,7 +31,6 @@ export default function Home() {
         </div>
       </div>
 
-    
       <div className=" relative top-20 py-10  px-5 md:px-20">
         <div className="text-center mb-10">
           <h2 className="text-2xl md:text-4xl font-bold">Find by Speciality</h2>
