@@ -16,7 +16,7 @@ function App() {
     console.log(data)
   }
   useEffect(()=>{
-    console.log("page state changed",data)
+    alert("saved changes",data)
   },[data])
   return (
       <BrowserRouter>
@@ -25,7 +25,7 @@ function App() {
         <Route path='/register' element={<Register/>}/>
         <Route path='/user-profile' element={<Profile data={data} handleEdit={handleEdit}/>}/>
       </Routes>
-      {edit && <UserInfo onSave={onSave}  onClose={handleEdit}/>}
+      {edit && <UserInfo onSave={onSave}  onClose={handleEdit} data={data}/>}
       </BrowserRouter>
       
       

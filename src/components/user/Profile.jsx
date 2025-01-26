@@ -1,6 +1,11 @@
 import React from 'react';
 
 export default function Profile({handleEdit, data}) {
+  const userdata = {
+    name: 'shaiz',
+    email: 'xyz@gmail.com',
+    phone: '8926212528'
+  }
   return (
     <div className="p-8 max-w-4xl mx-auto">
       <div className="flex flex-col lg:flex-row lg:items-center lg:gap-8">
@@ -13,7 +18,7 @@ export default function Profile({handleEdit, data}) {
 
         {/* Profile Information */}
         <div className="mt-6 lg:mt-0 lg:flex-1">
-          <h2 className="bg-gray-50 text-3xl font-medium text-neutral-800">{data.name || 'Mohsin'}</h2>
+          <h2 className="bg-gray-50 text-3xl font-medium text-neutral-800">{userdata.name}</h2>
           <hr className="bg-zinc-400 h-[1px] border-none mt-2" />
 
           {/* Contact Information */}
@@ -22,15 +27,15 @@ export default function Profile({handleEdit, data}) {
             <tbody>
               <tr>
                 <th className="pr-4">Email Id:</th>
-                <td>{data.email || 'xyz@gmail.com'}</td>
+                <td>{userdata.email }</td>
               </tr>
               <tr>
                 <th className="pr-4">Phone:</th>
-                <td>{data.phone || '786786786'}</td>
+                <td>{userdata.phone}</td>
               </tr>
               <tr>
                 <th className="pr-4">Address:</th>
-                <td>{data.address || 'BTM 5th Stage'}</td>
+                <td>{data.address}</td>
               </tr>
             </tbody>
           </table>
@@ -41,11 +46,11 @@ export default function Profile({handleEdit, data}) {
             <tbody>
               <tr>
                 <th className="pr-4">Gender:</th>
-                <td>{data.gender || 'Male'}</td>
+                <td>{data.gender}</td>
               </tr>
               <tr>
                 <th className="pr-4">DOB:</th>
-                <td>{data.dob || '25-12-2001'}</td>
+                <td>{data.dob}</td>
               </tr>
             </tbody>
           </table>

@@ -1,5 +1,5 @@
 import React, { useReducer } from 'react';
-function UserInfo({ onClose, onSave }) {
+function UserInfo({ onClose, onSave,data }) {
 
   const formReducer = (state, action) => {
     switch (action.type) {
@@ -17,7 +17,7 @@ function UserInfo({ onClose, onSave }) {
     }
   }
 
-  const initialstate = { name: '', email: '', phone: '', address: '', gender: '', dob: '' }
+  const initialstate = data || { name: '', email: '', phone: '', address: '', gender: '', dob: '' }
   const [state, dispatch] = useReducer(formReducer, initialstate);
 
   const handleChange = (e) => {
@@ -45,6 +45,7 @@ function UserInfo({ onClose, onSave }) {
             value={state.name}
             onChange={handleChange}
             id="name"
+            required
             className="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
 
           />
@@ -61,6 +62,7 @@ function UserInfo({ onClose, onSave }) {
             value={state.email}
             onChange={handleChange}
             id='email'
+            required
             className="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
           />
         </div>
@@ -72,6 +74,7 @@ function UserInfo({ onClose, onSave }) {
             value={state.phone}
             onChange={handleChange}
             id='phone'
+            required
             className="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
           />
         </div>
@@ -83,6 +86,7 @@ function UserInfo({ onClose, onSave }) {
             value={state.address}
             onChange={handleChange}
             id='address'
+            required
             className="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
           />
         </div>
@@ -100,6 +104,7 @@ function UserInfo({ onClose, onSave }) {
                 checked={state.gender === 'Male'}
                 onChange={handleChange}
                 id='gender'
+                required
                 className="text-blue-500 focus:ring-blue-400"
               />
               <span className="ml-2 text-gray-600">Male</span>
@@ -112,6 +117,7 @@ function UserInfo({ onClose, onSave }) {
                 checked={state.gender === 'Female'}
                 onChange={handleChange}
                 id='gender'
+                required
                 className="text-blue-500 focus:ring-blue-400"
               />
               <span className="ml-2 text-gray-600">Female</span>
@@ -126,6 +132,7 @@ function UserInfo({ onClose, onSave }) {
             value={state.dob}
             onChange={handleChange}
             id='dob'
+            required
             className="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
           />
         </div>
