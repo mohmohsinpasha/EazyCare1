@@ -1,34 +1,19 @@
 import React, { useReducer } from 'react';
-function UserInfo({ onClose, onSave,data }) {
 
-  const formReducer = (state, action) => {
-    switch (action.type) {
-      case 'fields':
-        return {
-          ...state,
-          [action.field]: action.value,
-        };
-      case 'reset':
-        return {
-          name: '', email: '', phone: 0, address: '', gender: '', dob: ''
-        }
-      default:
-        throw new Error('Unknown Action Type')
-    }
-  }
 
-  const initialstate = data || { name: '', email: '', phone: '', address: '', gender: '', dob: '' }
-  const [state, dispatch] = useReducer(formReducer, initialstate);
+function UserInfo({userData,setUserData,setShowUserInfo}) {
+  console.log(userData)
 
-  const handleChange = (e) => {
-    dispatch({ type: 'fields', field: e.target.name, value: e.target.value })
-  }
-
+ const handleChange=(e)=>{
+  
+  setUserData((prev)=> ({...prev,[e.target.name]:e.target.value}))
+ }
 
   const handleSave = (e) => {
     e.preventDefault();
-    onSave(state);
-    dispatch({ type: 'reset' })
+    console.log(userData)
+    setShowUserInfo(false)
+    
   }
 
   return (
@@ -37,12 +22,13 @@ function UserInfo({ onClose, onSave,data }) {
         <h2 className="text-2xl font-bold text-gray-700 mb-6">User Information Form </h2>
 
         <h3 className="text-lg font-semibold text-gray-600 mb-3">Personal Details</h3>
+        <form onSubmit={handleSave}>
         <div className="mb-4">
           <label className="block text-sm font-medium text-gray-600">Name</label>
           <input
             type="text"
             name='name'
-            value={state.name}
+            value={userData.name}
             onChange={handleChange}
             id="name"
             required
@@ -59,8 +45,9 @@ function UserInfo({ onClose, onSave,data }) {
           <input
             type="email"
             name='email'
-            value={state.email}
+            value={userData.email}
             onChange={handleChange}
+
             id='email'
             required
             className="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
@@ -71,8 +58,9 @@ function UserInfo({ onClose, onSave,data }) {
           <input
             type="number"
             name='phone'
-            value={state.phone}
+            value={userData.phone}
             onChange={handleChange}
+
             id='phone'
             required
             className="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
@@ -83,8 +71,9 @@ function UserInfo({ onClose, onSave,data }) {
           <input
             type="text"
             name='address'
-            value={state.address}
+            value={userData?.address}
             onChange={handleChange}
+
             id='address'
             required
             className="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
@@ -101,9 +90,10 @@ function UserInfo({ onClose, onSave,data }) {
                 type="radio"
                 name="gender"
                 value="Male"
-                checked={state.gender === 'Male'}
                 onChange={handleChange}
-                id='gender'
+
+                checked={userData?.gender === 'Male'}
+                    id='gender'
                 required
                 className="text-blue-500 focus:ring-blue-400"
               />
@@ -114,9 +104,10 @@ function UserInfo({ onClose, onSave,data }) {
                 type="radio"
                 name="gender"
                 value="Female"
-                checked={state.gender === 'Female'}
                 onChange={handleChange}
-                id='gender'
+
+                checked={userData?.gender === 'Female'}
+                    id='gender'
                 required
                 className="text-blue-500 focus:ring-blue-400"
               />
@@ -129,8 +120,9 @@ function UserInfo({ onClose, onSave,data }) {
           <input
             type="date"
             name='dob'
-            value={state.dob}
+            value={userData?.dob}
             onChange={handleChange}
+
             id='dob'
             required
             className="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
@@ -138,18 +130,18 @@ function UserInfo({ onClose, onSave,data }) {
         </div>
 
         <div className="flex justify-between mt-6">
-          <button onClick={handleSave}
+          <button 
             className="bg-blue-500 text-white font-semibold py-2 px-4 rounded-lg shadow-md hover:bg-blue-600"
           >
             Save
           </button>
-          <button
-            onClick={onClose}
+          <button onClick={()=>setShowUserInfo(false)}
             className="bg-red-500 text-white font-semibold py-2 px-4 rounded-lg shadow-md hover:bg-red-600"
           >
             Close
           </button>
         </div>
+        </form>
       </div>
 
     </div>
