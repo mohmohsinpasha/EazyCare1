@@ -1,12 +1,25 @@
-
-
-
-
-
-import React from 'react';
+import React, { useState } from 'react';
+import UserInfo from './UserInfo';
 
 export default function Profile() {
+
+  const [showUserInfo,setShowUserInfo]=useState(false)
+
+  const [userData,setUserData]=useState({
+    name: 'shaiz',
+    email: 'xyz@gmail.com',
+    phone: '8926212528'
+  })
+
+
+  const handleEdit=()=>{
+    setShowUserInfo(true)
+
+  }
   return (
+    <>
+    {showUserInfo && <UserInfo userData={userData} setUserData={setUserData} setShowUserInfo={setShowUserInfo}/>}
+
     <div className="p-8 max-w-4xl mx-auto">
       <div className="flex flex-col lg:flex-row lg:items-center lg:gap-8">
         {/* Profile Picture */}
@@ -18,7 +31,7 @@ export default function Profile() {
 
         {/* Profile Information */}
         <div className="mt-6 lg:mt-0 lg:flex-1">
-          <h2 className="bg-gray-50 text-3xl font-medium text-neutral-800">Mohsin</h2>
+          <h2 className="bg-gray-50 text-3xl font-medium text-neutral-800">{userData.name}</h2>
           <hr className="bg-zinc-400 h-[1px] border-none mt-2" />
 
           {/* Contact Information */}
@@ -27,15 +40,15 @@ export default function Profile() {
             <tbody>
               <tr>
                 <th className="pr-4">Email Id:</th>
-                <td>xyz@gmail.com</td>
+                <td>{userData.email }</td>
               </tr>
               <tr>
                 <th className="pr-4">Phone:</th>
-                <td>+999999999</td>
+                <td>{userData.phone}</td>
               </tr>
               <tr>
-                <th className="pr-4">Address:</th>
-                <td>###</td>
+                <th className="pr-4">Address: </th>
+                <td>{userData?.address ? userData.address : 'no data'}</td>
               </tr>
             </tbody>
           </table>
@@ -46,27 +59,35 @@ export default function Profile() {
             <tbody>
               <tr>
                 <th className="pr-4">Gender:</th>
-                <td>Male</td>
+                <td>{userData?.gender ? userData.gender : 'no data'}</td>
               </tr>
               <tr>
                 <th className="pr-4">DOB:</th>
-                <td>25 Dec 2001</td>
+                <td>{userData?.dob ? userData.dob : 'no data'}</td>
               </tr>
             </tbody>
           </table>
 
           {/* Action Buttons */}
           <div className="mt-6 flex gap-4">
+
             <button className="border border-primary px-6 py-2 rounded-full hover:bg-primary hover:text-black">
               Edit
             </button>
             <button className="border border-primary px-6 py-2 rounded-full hover:bg-primary hover:text-black">
+
+            <button onClick={handleEdit} className="border border-primary px-6 py-2 rounded-full hover:bg-primary hover:text-gray-900 hover:bg-gray-400">
+              Edit
+            </button>
+            <button className="border border-primary px-6 py-2 rounded-full hover:bg-primary hover:text-gray-900 hover:bg-gray-400">
+
               Save Information
             </button>
           </div>
         </div>
       </div>
     </div>
+    </>
   );
 }
 
