@@ -11,13 +11,11 @@ function App() {
 
   return (
       <BrowserRouter>
-        <Navbar/>
+        
         <Routes>
           <Route path='/' element={<Signin />} />
-          <Route path="/home" element={<Home/>}/>
           <Route path='/register' element={<Register />} />
           <Route path='/user-profile' element={<Profile />} />
-  
         </Routes>
       </BrowserRouter>
   )
