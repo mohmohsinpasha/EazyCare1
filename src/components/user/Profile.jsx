@@ -71,10 +71,7 @@ export default function Profile() {
           {/* Action Buttons */}
           <div className="mt-6 flex gap-4">
 
-            <button className="border border-primary px-6 py-2 rounded-full hover:bg-primary hover:text-black">
-              Edit
-            </button>
-            <button className="border border-primary px-6 py-2 rounded-full hover:bg-primary hover:text-black"> </button>
+
 
             <button onClick={handleEdit} className="border border-primary px-6 py-2 rounded-full hover:bg-primary hover:text-gray-900 hover:bg-gray-400">
               Edit
