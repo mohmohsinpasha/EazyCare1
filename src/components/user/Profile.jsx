@@ -80,10 +80,7 @@ export default function Profile() {
               <button className="border border-primary px-6 py-2 rounded-full hover:bg-primary hover:text-gray-900 hover:bg-gray-400">
                 Save Information
               </button>
-            </div>
-
-        {/* Profile Information */}
-   
+            </div>   
         </div>
       </div>
     </div>
