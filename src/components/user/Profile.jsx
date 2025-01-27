@@ -134,8 +134,10 @@ export default function Profile() {
               Save Information
             </button>
           </div>
+          </div>
         </div>
       </div>
+    </div>
     </>
   );
 }
