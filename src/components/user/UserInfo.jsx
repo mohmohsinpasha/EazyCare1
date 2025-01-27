@@ -1,20 +1,18 @@
-import React, { useReducer } from 'react';
+import React, { useReducer, useState } from 'react';
 
 
 function UserInfo({userData,setUserData,setShowUserInfo}) {
-  console.log(userData)
+  const [tempData, setTempData] = useState({ ...userData });
 
- const handleChange=(e)=>{
-  
-  setUserData((prev)=> ({...prev,[e.target.name]:e.target.value}))
- }
+  const handleChange = (e) => {
+    setTempData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  };
 
   const handleSave = (e) => {
     e.preventDefault();
-    console.log(userData)
+    setUserData(tempData)
     setShowUserInfo(false)
-    
-  }
+  };
 
   return (
     <div className="fixed inset-0 w-full h-full bg-gray-800 bg-opacity-70 flex justify-center items-center z-[1000]">
@@ -28,7 +26,7 @@ function UserInfo({userData,setUserData,setShowUserInfo}) {
           <input
             type="text"
             name='name'
-            value={userData.name}
+            value={tempData.name}
             onChange={handleChange}
             id="name"
             required
@@ -45,7 +43,7 @@ function UserInfo({userData,setUserData,setShowUserInfo}) {
           <input
             type="email"
             name='email'
-            value={userData.email}
+            value={tempData.email}
             onChange={handleChange}
 
             id='email'
@@ -58,7 +56,7 @@ function UserInfo({userData,setUserData,setShowUserInfo}) {
           <input
             type="number"
             name='phone'
-            value={userData.phone}
+            value={tempData.phone}
             onChange={handleChange}
 
             id='phone'
@@ -71,7 +69,7 @@ function UserInfo({userData,setUserData,setShowUserInfo}) {
           <input
             type="text"
             name='address'
-            value={userData?.address}
+            value={tempData?.address}
             onChange={handleChange}
 
             id='address'
@@ -92,7 +90,7 @@ function UserInfo({userData,setUserData,setShowUserInfo}) {
                 value="Male"
                 onChange={handleChange}
 
-                checked={userData?.gender === 'Male'}
+                checked={tempData?.gender === 'Male'}
                     id='gender'
                 required
                 className="text-blue-500 focus:ring-blue-400"
@@ -106,7 +104,7 @@ function UserInfo({userData,setUserData,setShowUserInfo}) {
                 value="Female"
                 onChange={handleChange}
 
-                checked={userData?.gender === 'Female'}
+                checked={tempData?.gender === 'Female'}
                     id='gender'
                 required
                 className="text-blue-500 focus:ring-blue-400"
@@ -120,7 +118,7 @@ function UserInfo({userData,setUserData,setShowUserInfo}) {
           <input
             type="date"
             name='dob'
-            value={userData?.dob}
+            value={tempData?.dob}
             onChange={handleChange}
 
             id='dob'
