@@ -40,12 +40,12 @@ export default function Navbar() {
           >
             ABOUT
           </a>
-          <a
-            href="#"
+          <Link
+            to="/contact"
             className="text-white font-bold text-lg hover:scale-105 hover:underline transition"
           >
             CONTACT
-          </a>
+          </Link>
         </div>
 
         <Link to="/register">

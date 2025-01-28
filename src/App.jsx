@@ -5,6 +5,7 @@ import Profile from './components/user/Profile';
 import Navbar from './components/user/Navbar';
 import Home from './components/user/Home';
 import Alldoctors from './components/user/Alldoctors';
+import { Contact } from './components/user/Contact';
 
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
           <Route path ='/Alldoctors' element = {<Alldoctors/>}/>
           <Route path='/register' element={<Register />} />
           <Route path='/user-profile' element={<Profile />} />
+          <Route path="/contact" element={<Contact/>}/>
         </Routes>
       </BrowserRouter>
   )
