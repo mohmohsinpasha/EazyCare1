@@ -13,7 +13,7 @@ export default function Navbar() {
   return (
     <div className="w-full  fixed top-0 left-0  bg-gradient-to-r from-green-400 to-blue-500 shadow-md z-50">
       <div className="flex items-center justify-between  px-5  py-3 h-16">
-        <img src={image} alt="Logo" className="w-2 md:w-20" />
+        <img src={image} alt="Logo" className="w-16 md:w-20 mt-2" />
 
         
         <div
