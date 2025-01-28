@@ -23,15 +23,19 @@ const doctorsData = {
   ],
   Pediatrics: [
     { img: image12, name: "Dr. Kevin Malone", specialty: "Pediatrics" },
-    { img: image13, name: "Dr. Oscar Martinez", specialty: "Pediatrics" }
+    { img: image13, name: "Dr. Oscar Martinez", specialty: "Pediatrics" },
+    { img: image10, name: "Dr. Peter Parker", specialty: "pediatrics" }
   ],
   Neurologist: [
     { img: image14, name: "Dr. Jim Halpert", specialty: "Neurologist" },
-    { img: image11, name: "Dr. Dwight Schrute", specialty: "Neurologist" }
+    { img: image11, name: "Dr. Dwight Schrute", specialty: "Neurologist" },
+    { img: image12, name: "Dr. Monica Green", specialty: "Neurologist" }
   ],
   Gastroenterologist: [
     { img: image10, name: "Dr. Pam Beesly", specialty: "Gastroenterologist" },
-    { img: image13, name: "Dr. Stanley Hudson", specialty: "Gastroenterologist" }
+    { img: image13, name: "Dr. Stanley Hudson", specialty: "Gastroenterologist" },
+    { img: image14, name: "Dr. Jim Halpert", specialty: "Gastroenterologist" },
+
   ]
 };
 
@@ -55,7 +59,7 @@ export default function Alldoctors() {
           </button>
         ))}
       </div>
-      <div className="lg:w-4/6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10 m-10">
+      <div className="lg:w-4/6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10 m-16">
         {doctorsData[selectedCategory].map((doctor, index) => (
           <div key={index} className="bg-white shadow-lg rounded-lg overflow-hidden">
             <img className="w-full h-60 object-contain" src={doctor.img} alt={doctor.name} />
