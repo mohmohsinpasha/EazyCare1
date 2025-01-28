@@ -40,7 +40,7 @@ export default function Alldoctors() {
 
   return (
     <div className="flex flex-col lg:flex-row p-6 mt-20">
-      {/* Left side - Buttons */}
+  
       <div className="lg:w-1/4 flex flex-col space-y-4 mb-6 lg:mb-0">
         <p className="text-xl font-semibold">Browse through the doctors' specialties</p>
         {Object.keys(doctorsData).map((category) => (
@@ -51,12 +51,10 @@ export default function Alldoctors() {
               selectedCategory === category ? 'bg-green-700' : 'bg-green-500'
             } hover:bg-green-600 transition-all duration-300`}
           >
-            {category.replace('_', ' ')}
+            {category}
           </button>
         ))}
       </div>
-
-      {/* Right side - Doctor images and details */}
       <div className="lg:w-4/6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10 m-10">
         {doctorsData[selectedCategory].map((doctor, index) => (
           <div key={index} className="bg-white shadow-lg rounded-lg overflow-hidden">

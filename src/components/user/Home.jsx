@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import image16 from '../../assets/doctor2-removebg-preview.png';
 import image from './logo23-removebg-preview.png';
 import image4 from '../../assets/special1.png';
@@ -17,6 +17,10 @@ import { FaArrowRight } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
 export default function Home() {
+  const [moreopen,setmoreopen]=useState(false)
+ const handleopen=()=>{
+  setmoreopen(true)
+ }
   return (
     <div className="bg-gray-50">
   
@@ -54,8 +58,23 @@ export default function Home() {
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6">
           {[image10, image11, image12, image13, image14, image13, image13, image13].map((img, index) => (
+            <div key={index} className="bg-white  shadow-lg rounded-lg overflow-hidden">
+              <img className="w-full h-48 object-contain" src={img} alt={`Doctor ${index + 1}`} />
+              <div className="p-4 text-center">
+                <h3 className="text-green-500 font-bold">Available</h3>
+                <b className="block text-lg">Dr. {index % 2 === 0 ? "Richard James" : "Emily Davis"}</b>
+                <p className="text-gray-600">General Specialist</p>
+              </div>
+              
+            </div>
+          ))}
+        </div>
+        <div className={`${
+            moreopen ? "block" : "hidden"
+          }  grid grid-cols-1 mt-7 md:grid-cols-3 lg:grid-cols-4 gap-6`}>
+          {[image10, image11, image12, image13, image14, image13, image13, image13].map((img, index) => (
             <div key={index} className="bg-white shadow-lg rounded-lg overflow-hidden">
-              <img className="w-full h-48 object-cover" src={img} alt={`Doctor ${index + 1}`} />
+              <img className="w-full h-48 object-contain" src={img} alt={`Doctor ${index + 1}`} />
               <div className="p-4 text-center">
                 <h3 className="text-green-500 font-bold">Available</h3>
                 <b className="block text-lg">Dr. {index % 2 === 0 ? "Richard James" : "Emily Davis"}</b>
@@ -63,8 +82,10 @@ export default function Home() {
               </div>
             </div>
           ))}
+          
+          
         </div>
-        <button className="mt-6 mx-auto block bg-blue-500 text-white font-bold px-6 py-2 rounded-lg hover:bg-blue-600 transition">More</button>
+        <button onClick={handleopen} className="mt-6 mx-auto block bg-blue-500 text-white font-bold px-6 py-2 rounded-lg hover:bg-blue-600 transition">More</button>
       </div>
 
     
