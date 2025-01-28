@@ -27,12 +27,13 @@ export default function Navbar() {
           >
             HOME
           </Link>
-          <a
+          <Link to='/Alldoctors'><a
             href="#"
             className="text-white font-bold text-lg hover:scale-105 hover:underline transition"
           >
             ALLDOCTORS
           </a>
+          </Link>
           <a
             href="#"
             className="text-white font-bold text-lg hover:scale-105 hover:underline transition"
