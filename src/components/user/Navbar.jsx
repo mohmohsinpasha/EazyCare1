@@ -3,7 +3,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import image from "./logo23-removebg-preview.png";
 
-export default function Navbar() {
+export default function Navbar({isLogin}) {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleMenu = () => {
@@ -22,7 +22,7 @@ export default function Navbar() {
           } flex-col md:flex md:flex-row items-center gap-5 absolute md:static top-16 right-0 bg-blue-500 md:bg-transparent shadow-lg md:shadow-none p-5 md:p-0 w-full md:w-auto z-50`}
         >
           <Link
-            to="/Home"
+            to="/home"
             className="text-white font-bold text-lg hover:scale-105 hover:underline transition"
           >
             HOME
@@ -48,11 +48,11 @@ export default function Navbar() {
           </Link>
         </div>
 
-        <Link to="/register">
+        {!isLogin && <Link to="/register">
           <button className="display md:block bg-white text-blue-500 font-bold px-4 py-2 rounded-lg hover:bg-cyan-400 hover:text-white transition">
             Create Account
           </button>
-        </Link>
+        </Link>}
 
         <IoMdMenu
           onClick={toggleMenu}

@@ -1,24 +1,41 @@
 
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import React, { useState } from 'react';
 
 
-function Signin() {
+function Signin({setIsLogin}) {
 const [formData,setFormData]=useState({
 email:"",
-Password:"",
+password:"",
 
 })
+const navigate=useNavigate()
  const handleChange=(e)=>{
 const {name,value}=e.target
 setFormData((prev)=>({...prev,[name]:value}));
  }
   const handleSumbit=async(e) =>{
     e.preventDefault();
-    try{
-      let response=await fetch("http://localhost:5000/api/user/login")
-      let data=await response.json()
+    try {
+      let response = await fetch("http://localhost:5000/api/user/login",{
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      })
+      console.log(response)
+      if (!response.ok) {
+      let data = await response.json()
       console.log(data)
+      alert(data.message);
+      return;
+      }
+      let data = await response.json()
+      console.log(data)
+      alert(data.message);
+      setIsLogin(true)
+      navigate("/home")
     }
     catch(error){
       console.log(error)
@@ -51,9 +68,9 @@ setFormData((prev)=>({...prev,[name]:value}));
           <input
             className="block h-10 w-full mt-2 px-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
             type="password"
-            name="Password"
+            name="password"
             placeholder="Enter your password"
-            value={formData.Password}
+            value={formData.password}
             onChange={ handleChange}
             required
           />
