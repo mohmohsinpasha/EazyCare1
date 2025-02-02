@@ -23,9 +23,8 @@ function Register() {
   
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (isStrongPassword(formData.password)) {
-      alert("password is strong you can proceed")
-    } else {
+    if (!isStrongPassword(formData.password)) {
+      
       alert("Password must be strong: at least 8 characters, with uppercase, lowercase, numbers, and special characters.");
     }
     if (formData.password !== formData.confirmPassword) {
@@ -33,13 +32,23 @@ function Register() {
       return;
     }
     try {
-      let response = await fetch("http://localhost:5000/api/user/register")
+      let response = await fetch("http://localhost:5000/api/user/register",{
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      })
+      console.log(response)
       if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
+        let data = await response.json()
+      console.log(data)
+      alert(data.message);
+      return;
       }
       let data = await response.json()
       console.log(data)
-      alert("Form submitted successfully!");
+      alert(data.message);
     }
     catch (error) {
       console.error(error)
